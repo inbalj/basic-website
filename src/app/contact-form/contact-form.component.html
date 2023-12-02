@@ -1,31 +1,47 @@
-<form class="text-center border border-light p-5" (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+<form
+  [formGroup]="contactForm"
+  class="text-center border border-light p-5"
+  (ngSubmit)="onSubmit()"
+  >
   <p class="h4 mb-4">Contact us</p>
   <!-- Name -->
-  <input
-    type="text"
-    formControlName="contactFormName"
-    id="name"
-    class="form-control mb-4"
-     placeholder="Name"
-  >
+  <div class="form-group mb-3">
+    <label>Name</label>
+    <input
+      type="text"
+      name="name"
+      class="form-control"
+      formControlName = "name"
+      required
+    />
+    <div *ngIf="contactForm.get('name')?.hasError('required') && contactForm.get('name')?.touched"
+    class="text-danger">Name is required</div>
+  </div>
   <!-- Email -->
-  <input
-    type="email"
-    formControlName="contactFormEmail"
-    id="email"
-    class="form-control mb-4"
-    placeholder="E-mail"
-    >
+  <div class="form-group mb-3">
+    <label>Email</label>
+    <input
+      type="email"
+      class="form-control"
+      name="email"
+      formControlName = "email"
+      required
+    />
+    <div *ngIf="contactForm.get('email')?.hasError('required') && contactForm.get('email')?.touched"
+    class="text-danger">Email is required</div>
+     <div *ngIf="contactForm.get('email')?.hasError('email') && contactForm.get('email')?.touched"
+    class="text-danger">Invalid email format</div>
+  </div>
   <!-- Message -->
   <div class="form-group">
     <div class="form-group">
-      <textarea formControlName="contactFormMessage" class="form-control rounded-0" mdbInput id="exampleFormControlTextarea2"
+      <textarea formControlName="message" class="form-control rounded-0" id="message"
         rows="3" placeholder="Message"></textarea>
     </div>
   </div>
   <!-- Send button -->
   <button color="info" outline="true" block="true" class="btn btn-primary my-4"
-     type="submit">Send</button>
+     type="submit" [disabled]="!contactForm.valid">Send</button>
 </form>
 
 <div *ngIf="payLoad" class="form-row">
