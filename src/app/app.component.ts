@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { PageComponent } from './page/page.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { MessageItem } from '../shared/models/messageItem';
+
 
 @Component({
   selector: 'app-root',

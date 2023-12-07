@@ -12,4 +12,11 @@ import { MessageItem } from '../../shared/models/messageItem';
 })
 export class ContactComponent {
 
+  items : MessageItem[] = [
+    new MessageItem('Jery','jery@test.com','How are you?'),
+    new MessageItem('Linda','lin@t.com','Get Coffee'),
+    new MessageItem('Harry Potter','snitch@hogwarts.com','Find the snitch')
+  ];
+
+
 }

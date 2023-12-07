@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, FormGroup, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
+import { MessageItem } from '../../shared/models/messageItem';
 
 
 
@@ -13,8 +14,11 @@ import { FormsModule, FormGroup, ReactiveFormsModule, FormBuilder, Validators} f
 })
 export class ContactFormComponent implements OnInit {
 
+  @Output() addMessage = new EventEmitter<MessageItem>();
+
   contactForm!: FormGroup;
   payLoad = '';
+
 
   constructor(private fb: FormBuilder) { }
 
@@ -37,7 +41,13 @@ export class ContactFormComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      this.payLoad = JSON.stringify(this.contactForm.value);
+     this.addMessage.emit(new MessageItem(
+      this.contactForm.get('name')?.value,
+      this.contactForm.get('email')?.value,
+      this.contactForm.get('message')?.value
+    ));
+    // Reset the form after successful submission
+    this.contactForm.reset();
     }
     else{
      console.log('Form is invalid. Please check the fields.');
