@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactFormComponent } from '../contact-form/contact-form.component';
+import { MessageListComponent } from '../message-list/message-list.component';
 import { MessageItem } from '../../shared/models/messageItem';
 
 @Component({
   selector: 'contact',
   standalone: true,
-  imports: [CommonModule, ContactFormComponent],
+  imports: [CommonModule, ContactFormComponent, MessageListComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
@@ -18,5 +19,9 @@ export class ContactComponent {
     new MessageItem('Harry Potter','snitch@hogwarts.com','Find the snitch')
   ];
 
+ // items! : MessageItem[];
 
+  get messageItems() : MessageItem[] {
+    return this.items;
+  };
 }

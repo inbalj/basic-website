@@ -1,0 +1,15 @@
+<div *ngIf="messages.length === 0; else showItems">
+  There are no messages to display.
+</div>
+
+<ng-template #showItems>
+  <ul class="message-list">
+      <li *ngFor="let item of messages">
+          <div class="item">
+            <div class="name"><span class="pre">From:</span> {{ item.messageName }}</div>
+            <div class="email"><span class="pre">Email:</span> {{ item.messageEmail }}</div>
+            <div class="message"><span class="pre">Message:</span> {{ item.messageText }}</div>
+          </div>
+      </li>
+  </ul>
+</ng-template>
