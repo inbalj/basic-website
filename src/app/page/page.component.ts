@@ -27,8 +27,6 @@ export class PageComponent implements OnInit{
     fetch("https://api.openweathermap.org/data/2.5/weather?q=tel+aviv&appid=7a8ceb0e6c5be276bbf7123eff1b0355")
       .then(response=>response.json())
       .then(data=>{this.setWeatherData(data);})
-    //let data = JSON.parse('[{"coord": {"lon": 48.570728,"lat": 34.790878},"country": "IR","geoname": {"cl": "P","code": "PPL", "parent": 132142} ]');
-    //this.setWeatherData(data);
   }
 
   setWeatherData(data : any){
