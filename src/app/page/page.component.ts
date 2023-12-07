@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { log } from 'console';
+
 
 @Component({
   selector: 'page',
