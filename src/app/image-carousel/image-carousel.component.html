@@ -1,0 +1,29 @@
+
+<div class="carousel-container"
+  [style.height.%]="config.height"
+  [style.width.%]="config.width">
+
+  <a
+    (click)="onPrevious()"
+    class="carousel-btn previous">
+    <i class="material-icons">chevron_left</i>
+  </a>
+  <a
+    (click)="onNext()"
+    class="carousel-btn next">
+    <i class="material-icons">chevron_right</i>
+  </a>
+
+
+  <div *ngFor="let image of images; let i = index;" class="carousel-wrapper">
+
+    <ng-container *ngIf="i == activeImageIndex">
+
+      <img
+        [src]="image.url"
+        [alt]="image.alt"
+        [style.height.%]="config.height"
+        [style.width.%]="config.width">
+    </ng-container>
+  </div>
+</div>
