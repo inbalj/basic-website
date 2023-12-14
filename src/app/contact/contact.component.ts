@@ -20,7 +20,6 @@ export class ContactComponent {
     new MessageItem('Harry Potter','snitch@hogwarts.com','Find the snitch')
   ];
 
- // items! : MessageItem[];
 
   get messageItems() : MessageItem[] {
     return this.items;
