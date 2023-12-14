@@ -1,7 +1,10 @@
- <li>
+<li class="d-flex justify-content-between">
     <div class="item">
+      <button type="button" class="btn btn-close" (click)="removeMessage()"></button>
       <div class="name"><span class="pre">From:</span> {{ message.messageName }}</div>
       <div class="email"><span class="pre">Email:</span> {{ message.messageEmail }}</div>
       <div class="message"><span class="pre">Message:</span> {{ message.messageText }}</div>
     </div>
-  </li>
+</li>
+
+

@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MessageItem } from '../../shared/models/messageItem';
+import { EventService }from './../../shared/services/EventService';
 
 
 @Component({
@@ -11,9 +12,13 @@ import { MessageItem } from '../../shared/models/messageItem';
   styleUrl: './message-list-item.component.scss'
 })
 export class MessageListItemComponent {
-  /* @Input() messageName!: string;
-  @Input() messageEmail!: string;
-  @Input() messageText!: string; */
+
   @Input() message! : MessageItem;
+
+  constructor( private events : EventService) { };
+
+  removeMessage(){
+    this.events.emit("removeMessage", this.message);
+  }
 
 }
