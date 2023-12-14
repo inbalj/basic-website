@@ -3,13 +3,11 @@
 </div>
 
 <ng-template #showItems>
-  <ul class="message-list">
-      <li *ngFor="let item of messages">
-          <div class="item">
-            <div class="name"><span class="pre">From:</span> {{ item.messageName }}</div>
-            <div class="email"><span class="pre">Email:</span> {{ item.messageEmail }}</div>
-            <div class="message"><span class="pre">Message:</span> {{ item.messageText }}</div>
-          </div>
-      </li>
+  <ul class="message-list" *ngIf="messages.length > 0">
+    <message-list-item
+      *ngFor="let message of messages"
+      [message]= "message"
+    >
+    </message-list-item>
   </ul>
 </ng-template>

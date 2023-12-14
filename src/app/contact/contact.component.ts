@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ContactFormComponent } from '../contact-form/contact-form.component';
 import { MessageListComponent } from '../message-list/message-list.component';
 import { MessageItem } from '../../shared/models/messageItem';
+import { MessageListItemComponent } from '../message-list-item/message-list-item.component';
 
 @Component({
   selector: 'contact',
   standalone: true,
-  imports: [CommonModule, ContactFormComponent, MessageListComponent],
+  imports: [CommonModule, ContactFormComponent, MessageListComponent, MessageListItemComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
