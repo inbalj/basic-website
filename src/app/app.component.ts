@@ -15,7 +15,9 @@ import { MessageItem } from '../shared/models/messageItem';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,FormsModule, HomeComponent, ContactFormComponent, PageComponent, MatButtonModule, MatMenuModule],
+  imports: [CommonModule, RouterOutlet,FormsModule,
+            HomeComponent, ContactFormComponent,
+            PageComponent, MatButtonModule, MatMenuModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
