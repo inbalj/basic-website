@@ -7,7 +7,7 @@
   <div *ngIf="!weatherData.isDay" class="weatherWidgetRow">
       <i class="fas fa-3x fa-moon moon"></i>
   </div>
-  <div class="weatherWidgetRow cloudDiv">
+  <div *ngIf="weatherData.isCloudy" class="weatherWidgetRow cloudDiv">
       <i class="fas fa-cloud fa-3x cloud"></i>
   </div>
   <div class="weatherWidgetRow" style="font-size: 40px;margin-top: 5px;">{{weatherData.tempCelcius}}°</div>
@@ -18,7 +18,7 @@
 </div>
 
 
-<h2 class="center forecast">change city and state</h2>
+<h2 class="center forecast">change city and state form</h2>
 
 <h2 class="center forecast">4 days Forecast</h2>
 <ul class="day-list">

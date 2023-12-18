@@ -44,6 +44,7 @@ export class PageComponent implements OnInit{
     this.weatherData.tempMax = this.weatherData.days[0].tempmax;
     this.weatherData.humidity = this.weatherData.currentConditions.humidity;
     this.weatherData.feelLike = this.weatherData.currentConditions.feelslike;
+    this.weatherData.isCloudy = (this.weatherData.currentConditions.condition == 'Overcast')? true : false; //this.weatherData.currentConditions.icon;
   }
 
 }
