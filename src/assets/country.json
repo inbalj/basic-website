@@ -1,0 +1,7 @@
+[
+{"id": 1, "sortname": "IL", "name": "Israel", "phonecode": 972},
+{"id": 2, "sortname": "US", "name": "United States", "phonecode": 1},
+{"id": 3, "sortname": "CY", "name": "Cyprus", "phonecode": 357},
+{"id": 4, "sortname": "UK", "name": "United Kingdom", "phonecode": 44},
+{"id": 5, "sortname": "IT", "name": "Italy", "phonecode": 39}
+]

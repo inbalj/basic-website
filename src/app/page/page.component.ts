@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { WeatherFormComponent } from '../weather-form/weather-form.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @Component({
   selector: 'page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, WeatherFormComponent],
   templateUrl: './page.component.html',
   styleUrl: './page.component.scss'
 })
@@ -22,12 +23,6 @@ export class PageComponent implements OnInit{
     this.getTodayWeatherData();
     console.log(this.getTodayWeatherData());
   }
-
-  /* getTodayWeatherData(){
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=tel+aviv&appid=7a8ceb0e6c5be276bbf7123eff1b0355")
-      .then(response=>response.json())
-      .then(data=>{this.setTodayWeatherData(data);})
-  } */
 
   getTodayWeatherData(){
     fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/tel%20aviv/today?unitGroup=metric&include=current&key=6USUUHESZ2GF6GQZCQGDYXQ2X")

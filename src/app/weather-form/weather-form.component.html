@@ -1,0 +1,36 @@
+<h2 class="center weather">change city and state form</h2>
+<form
+  class="text-center border border-light p-5 center"
+  >
+  <!-- Country -->
+  <mat-form-field>
+    <mat-label>Country</mat-label>
+    <mat-select name="country" [formControl]="countryControl">
+      <mat-option [value]="null">None</mat-option>
+      <mat-option
+        *ngFor="let country of countries | async"
+        [value]="country"
+      >
+        {{ country.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- City -->
+  <div class="grid-item">
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <mat-select name="state" [formControl]="cityControl">
+        <mat-option [value]="null">None</mat-option>
+        <mat-option
+          *ngFor="let city of cities | async"
+          [value]="city"
+        >
+          {{ city.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <!-- Send button -->
+  <button color="info" outline="true" block="true" class="btn btn-primary my-4"
+     type="submit">Send</button>
+</form>
