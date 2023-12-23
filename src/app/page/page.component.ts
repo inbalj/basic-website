@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeatherFormComponent } from '../weather-form/weather-form.component';
-import { HttpClientModule } from "@angular/common/http";
+
 
 @Component({
   selector: 'page',
@@ -12,7 +12,7 @@ import { HttpClientModule } from "@angular/common/http";
 })
 export class PageComponent implements OnInit{
 
-  weatherData:any;
+  weatherData : any;
   constructor(){}
 
   ngOnInit(): void {
@@ -21,7 +21,6 @@ export class PageComponent implements OnInit{
       isDay: true
     };
     this.getTodayWeatherData();
-    console.log(this.getTodayWeatherData());
   }
 
   getTodayWeatherData(){
@@ -39,7 +38,7 @@ export class PageComponent implements OnInit{
     this.weatherData.tempMax = this.weatherData.days[0].tempmax;
     this.weatherData.humidity = this.weatherData.currentConditions.humidity;
     this.weatherData.feelLike = this.weatherData.currentConditions.feelslike;
-    this.weatherData.isCloudy = (this.weatherData.currentConditions.condition == 'Overcast')? true : false; //this.weatherData.currentConditions.icon;
+    this.weatherData.isCloudy = (this.weatherData.currentConditions.condition == 'cloudy')? true : false; //this.weatherData.currentConditions.icon;
   }
 
 }

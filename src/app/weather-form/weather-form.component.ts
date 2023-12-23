@@ -4,7 +4,6 @@ import { FormsModule, FormGroup, ReactiveFormsModule, FormBuilder, Validators, F
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-//import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
 import { of, startWith, switchMap, tap } from "rxjs";
 import { WeatherService } from '../../shared/services/WeatherService';
 import { Country } from '../../shared/models/country';
@@ -24,6 +23,11 @@ import { HttpClientModule } from "@angular/common/http";
   styleUrl: './weather-form.component.scss'
 })
 export class WeatherFormComponent{
+  chosenCountry! : Country;
+  chosenCity! : City;
+
+  //weatherForm!: FormGroup;
+
 
   countryControl =  new FormControl<Country | null>(null);
   cityControl = new FormControl<City | null>(null);
@@ -49,6 +53,12 @@ export class WeatherFormComponent{
 			}
 		})
 	);
+
+  onSubmit(){
+    this.cityControl.value
+    console.log(this.countryControl.value?.name + ' , ' + this.cityControl.value?.name);
+   }
+
 
  }
 
