@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,EventEmitter, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, FormGroup, ReactiveFormsModule, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -23,10 +23,8 @@ import { HttpClientModule } from "@angular/common/http";
   styleUrl: './weather-form.component.scss'
 })
 export class WeatherFormComponent{
-  chosenCountry! : Country;
-  chosenCity! : City;
 
-  //weatherForm!: FormGroup;
+  @Output() cityCountryData = new EventEmitter<{ choosenCity: any, choosenCountry: any }>();
 
 
   countryControl =  new FormControl<Country | null>(null);
@@ -55,8 +53,10 @@ export class WeatherFormComponent{
 	);
 
   onSubmit(){
-    this.cityControl.value
-    console.log(this.countryControl.value?.name + ' , ' + this.cityControl.value?.name);
+    let choosenCity = this.cityControl.value?.name;
+    let choosenCountry = this.countryControl.value?.name;
+
+    this.cityCountryData.emit({ choosenCity : choosenCity, choosenCountry: choosenCountry  });
    }
 
 

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeatherFormComponent } from '../weather-form/weather-form.component';
-import { Country } from '../../shared/models/country';
-import { City } from '../../shared/models/city';
-
 
 @Component({
   selector: 'page',
@@ -15,6 +12,8 @@ import { City } from '../../shared/models/city';
 export class PageComponent implements OnInit{
 
   title: string = "Tel Aviv";
+  city : string = "Tel Aviv";
+  country: string = '';
 
   weatherData : any;
   constructor(){}
@@ -25,11 +24,10 @@ export class PageComponent implements OnInit{
       isDay: true
     };
     this.getTodayWeatherData();
-    //this.getFormWeatherData();
   }
 
-  setTitle(address : string){
-    this.title = address;
+  setTitle(city : string){
+    this.title = city;
   }
 
   getTodayWeatherData(){
@@ -40,10 +38,7 @@ export class PageComponent implements OnInit{
 
   getFormWeatherData(){
 
-    let country = "Israel";
-    let city = "Jerusalem";
-
-    fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"+ country + "+" + city + "/today?unitGroup=metric&include=current&key=6USUUHESZ2GF6GQZCQGDYXQ2X")
+    fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"+ this.country + "+" + this.city + "/today?unitGroup=metric&include=current&key=6USUUHESZ2GF6GQZCQGDYXQ2X")
     .then(response=>response.json())
     .then(data=>{this.setWeatherData(data);})
   }
@@ -51,10 +46,9 @@ export class PageComponent implements OnInit{
 
 
   setWeatherData(data : any){
-    console.log( data.resolvedAddress);
 
     this.weatherData = data;
-    this.setTitle(data.address);
+    this.setTitle(this.city);
     this.weatherData.isDay = this.weatherData.currentConditions.datetimeEpoch < this.weatherData.currentConditions.sunsetEpoch;
     this.weatherData.tempCelcius = this.weatherData.currentConditions.temp;
     this.weatherData.tempMin = this.weatherData.days[0].tempmin;
@@ -64,4 +58,12 @@ export class PageComponent implements OnInit{
     this.weatherData.isCloudy = (this.weatherData.currentConditions.condition == 'cloudy')? true : false; //this.weatherData.currentConditions.icon;
   }
 
+  receiveData(data: { choosenCity: any, choosenCountry: any }) {
+     this.city = data.choosenCity;
+     this.country = data.choosenCountry;
+     this.getFormWeatherData();
+  }
+
+
 }
+

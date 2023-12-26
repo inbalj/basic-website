@@ -17,8 +17,7 @@
   <div class="weatherWidgetRow" style="font-size: 17px;">Humidity: {{weatherData.humidity}}%</div>
 </div>
 
-
-<weather-form></weather-form>
+<weather-form (cityCountryData)="receiveData($event)"></weather-form>
 
 <ul class="day-list">
 <li>
