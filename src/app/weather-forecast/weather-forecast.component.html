@@ -1,0 +1,27 @@
+<h2 class="center">4 Day outlook for {{ title }}</h2>
+<div class="w3-row">
+  <div class="w3-twothird">
+    <table class="w3-table w3-striped w3-bordered">
+      <thead>
+        <tr class="t-header">
+          <th *ngFor="let header of headers">
+            {{ header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let day of weatherData.days">
+          <td>{{ day.datetime }}</td>
+          <td>{{ day.temp}}</td>
+          <td>{{ day.tempmin }}</td>
+          <td>{{ day.tempmax }}</td>
+          <td>{{ day.feelslike }}</td>
+          <td>{{ day.humidity }}</td>
+          <td>{{ day.conditions }}</td>
+          <td class="icon {{ day.icon }}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

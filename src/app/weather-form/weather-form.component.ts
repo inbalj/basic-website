@@ -6,8 +6,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { of, startWith, switchMap, tap } from "rxjs";
 import { WeatherService } from '../../shared/services/WeatherService';
-import { Country } from '../../shared/models/country';
-import { City } from '../../shared/models/city';
+import { Country } from '../../shared/models/country.models';
+import { City } from '../../shared/models/city.models';
 import { HttpClientModule } from "@angular/common/http";
 
 

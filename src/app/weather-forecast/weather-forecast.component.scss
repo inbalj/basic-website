@@ -1,0 +1,83 @@
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+
+ table  {
+  & thead .t-header{
+    border-bottom: 1px solid rgb(230,230,230);
+    color: rgb(227 218 218);
+    background-color: rgb(63,81,181);
+    text-align: center;
+    font-size: 0.75em;
+    font-weight: 700;
+    padding: 16px 16px 16px 0;
+  }
+
+  & th , td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+  }
+
+  & tr:nth-child(odd) {
+    background-color: #f1f1f1;
+  }
+
+  & tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+
+  margin: auto;
+  width: 70%;
+
+}
+.icon {
+width: 5.5%;
+
+}
+
+.clear-day {
+	background-image: url("../../assets/images/clear-day.svg");
+}
+
+.clear-night {
+	background-image: url("../../assets/images/clear-night.svg");
+}
+.cloudy {
+	background-image: url("../../assets/images/cloudy.svg");
+}
+.fog{
+  background-image: url("../../assets/images/fog.svg");
+}
+.hail{
+  background-image: url("../../assets/images/hail.svg");
+}
+.partly-cloudy-day{
+  background-image: url("../../assets/images/partly-cloudy-day.svg");
+}
+.partly-cloudy-night{
+  background-image: url("../../assets/images/partly-cloudy-night.svg");
+}
+.rain-snow-showers-day{
+  background-image: url("../../assets/images/rain-snow-showers-day.svg");
+}
+.rain-snow-showers-night{
+  background-image: url("../../assets/images/rain-snow-showers-night.svg");
+}
+.rain-snow{
+  background-image: url("../../assets/images/rain-snow.svg");
+}
+.rain {
+	background-image: url("../../assets/images/rain.svg");
+}
+
+.snow {
+	background-image: url("../../assets/images/snow.svg");
+}
+
+
+

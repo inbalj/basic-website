@@ -1,5 +1,5 @@
 
-<h2 class="center">The weather in {{ title }}</h2>
+<h2 class="center" [style.width]=title>The weather in {{ title }}</h2>
 <div id="divWeatherMain" class="center">
   <div *ngIf="weatherData.isDay" class="weatherWidgetRow">
       <i class="fas fa-3x fa-sun sun"></i>
@@ -10,6 +10,9 @@
   <div *ngIf="weatherData.isCloudy" class="weatherWidgetRow cloudDiv">
       <i class="fas fa-cloud fa-3x cloud"></i>
   </div>
+  <div *ngIf="weatherData.isRainy" class="weatherWidgetRow rainDiv">
+    <i class="fas fa-rain fa-3x rain"></i>
+</div>
   <div class="weatherWidgetRow" style="font-size: 40px;margin-top: 5px;">{{weatherData.tempCelcius}}°</div>
   <div class="weatherWidgetRow" style="font-size: 17px;">{{weatherData.tempMin}}° / {{weatherData.tempMax}}°</div>
   <div class="weatherWidgetRow" style="font-size: 17px;">Feels Like: {{weatherData.feelLike}}°</div>
@@ -19,9 +22,4 @@
 
 <weather-form (cityCountryData)="receiveData($event)"></weather-form>
 
-<ul class="day-list">
-<li>
-    <div class="day-list-values"></div>
-</li>
-</ul>
-<p>Need to do.....</p>
+<weather-forecast></weather-forecast>
