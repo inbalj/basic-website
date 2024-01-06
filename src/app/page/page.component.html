@@ -1,25 +1,6 @@
 
-<h2 class="center" [style.width]=title>The weather in {{ title }}</h2>
-<div id="divWeatherMain" class="center">
-  <div *ngIf="weatherData.isDay" class="weatherWidgetRow">
-      <i class="fas fa-3x fa-sun sun"></i>
-  </div>
-  <div *ngIf="!weatherData.isDay" class="weatherWidgetRow">
-      <i class="fas fa-3x fa-moon moon"></i>
-  </div>
-  <div *ngIf="weatherData.isCloudy" class="weatherWidgetRow cloudDiv">
-      <i class="fas fa-cloud fa-3x cloud"></i>
-  </div>
-  <div *ngIf="weatherData.isRainy" class="weatherWidgetRow rainDiv">
-    <i class="fas fa-rain fa-3x rain"></i>
-</div>
-  <div class="weatherWidgetRow" style="font-size: 40px;margin-top: 5px;">{{weatherData.tempCelcius}}°</div>
-  <div class="weatherWidgetRow" style="font-size: 17px;">{{weatherData.tempMin}}° / {{weatherData.tempMax}}°</div>
-  <div class="weatherWidgetRow" style="font-size: 17px;">Feels Like: {{weatherData.feelLike}}°</div>
-  <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{weatherData.name}}</div>
-  <div class="weatherWidgetRow" style="font-size: 17px;">Humidity: {{weatherData.humidity}}%</div>
-</div>
+<weather-widget [choosenCity]="choosenCity" ></weather-widget>
 
-<weather-form (cityCountryData)="receiveData($event)"></weather-form>
+<weather-form (cityCountryData)="setChoosenCityAndCountry($event.choosenCity,$event.choosenCountry)"></weather-form>
 
-<weather-forecast></weather-forecast>
+<weather-forecast [choosenCity]="choosenCity"></weather-forecast>

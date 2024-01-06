@@ -23,7 +23,7 @@ import { HttpClientModule } from "@angular/common/http";
   styleUrl: './weather-form.component.scss'
 })
 export class WeatherFormComponent{
-
+//send data to parent component - page
   @Output() cityCountryData = new EventEmitter<{ choosenCity: any, choosenCountry: any }>();
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
@@ -17,8 +17,11 @@ const API_KEY = '6USUUHESZ2GF6GQZCQGDYXQ2X';
 
 
 export class WeatherForecastComponent implements OnInit {
+// passed from parent component - Page
+  @Input() choosenCity : string = '';
+  @Input() choosenCountry : string = '';
 
-  title = "Tel Aviv";
+
   weatherData: any = {};
   headers = [
     "Date",
@@ -51,7 +54,6 @@ export class WeatherForecastComponent implements OnInit {
 
   loadForecastData( data : any[]){
     this.weatherData = data;
-
   }
 
 }
