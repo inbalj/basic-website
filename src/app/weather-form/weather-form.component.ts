@@ -30,10 +30,10 @@ export class WeatherFormComponent{
   countryControl =  new FormControl<Country | null>(null);
   cityControl = new FormControl<City | null>(null);
 
-  constructor(private weather: WeatherService) {}
+  constructor(private WeatherService: WeatherService) {}
 
   // Observables for the dropdown options
-	countries = this.weather.getCountries();
+	countries = this.WeatherService.getCountries();
 
   cities = this.countryControl.valueChanges.pipe(
 		startWith(this.countryControl.value),
@@ -41,7 +41,7 @@ export class WeatherFormComponent{
 			if (!country) {
 				return of([]);
 			} else {
-				return this.weather.getCitiesByCountry(country).pipe(
+				return this.WeatherService.getCitiesByCountry(country).pipe(
 					tap((cities) => {
 						if (cities.length == 0) {
 							alert("No Cities Data Found.");
@@ -57,6 +57,7 @@ export class WeatherFormComponent{
     let choosenCountry = this.countryControl.value?.name;
 
     this.cityCountryData.emit({ choosenCity : choosenCity, choosenCountry: choosenCountry  });
+    this.WeatherService.updateWeatherData({ choosenCity : choosenCity, choosenCountry: choosenCountry  });
    }
 
 

@@ -1,8 +1,8 @@
-import { Component, OnInit ,Input, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeatherFormComponent } from '../weather-form/weather-form.component';
 import { WeatherForecastComponent } from '../weather-forecast/weather-forecast.component';
-
+import { WeatherService } from '../../shared/services/WeatherService';
 
 const API_KEY = '6USUUHESZ2GF6GQZCQGDYXQ2X';
 
@@ -22,7 +22,8 @@ export class WeatherWidgetComponent implements OnInit{
 
 
   weatherData : any;
-  constructor(){}
+
+  constructor(private weatherService: WeatherService) {}
 
   ngOnInit(): void {
     this.weatherData = {
@@ -30,6 +31,12 @@ export class WeatherWidgetComponent implements OnInit{
       isDay: true
     };
     this.getTodayWeatherData();
+
+    this.weatherService.weatherData$.subscribe(data => {
+      this.choosenCity = data.choosenCity;
+      this.choosenCountry = data.choosenCountry;
+      this.getFormWeatherData();
+    });
   }
 
 
@@ -60,10 +67,5 @@ export class WeatherWidgetComponent implements OnInit{
     this.weatherData.isRainy = (this.weatherData.currentConditions.condition == 'Rain')? true : false;
   }
 
-  receiveData(data: { choosenCity: any, choosenCountry: any }) {
-     this.choosenCity = data.choosenCity;
-     this.choosenCountry = data.choosenCountry;
-     this.getFormWeatherData();
-  }
 
 }

@@ -1,6 +1,17 @@
 
-<weather-widget [choosenCity]="choosenCity" ></weather-widget>
+<weather-widget
+ [choosenCity]="choosenCity"
+ [choosenCountry]="choosenCountry"
+>
+</weather-widget>
 
-<weather-form (cityCountryData)="setChoosenCityAndCountry($event.choosenCity,$event.choosenCountry)"></weather-form>
+<weather-form
+  (cityCountryData)="setChoosenCityAndCountry($event.choosenCity,$event.choosenCountry)"
+>
+</weather-form>
 
-<weather-forecast [choosenCity]="choosenCity"></weather-forecast>
+<weather-forecast
+ [choosenCity]="choosenCity"
+ [choosenCountry]="choosenCountry"
+>
+</weather-forecast>

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-
+import { WeatherService } from '../../shared/services/WeatherService';
 
 
 const API_KEY = '6USUUHESZ2GF6GQZCQGDYXQ2X';
@@ -34,17 +34,24 @@ export class WeatherForecastComponent implements OnInit {
     "Icon"
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private weatherService: WeatherService) {}
 
   ngOnInit(): void {
     this.getForecastFromToday();
+    this.weatherService.weatherData$.subscribe(data => {
+      this.choosenCity = data.choosenCity;
+      this.choosenCountry = data.choosenCountry;
+      this.getForecastFromToday();
+    });
+
   }
 
   getForecastFromToday(){
     let today = new Date().toJSON().slice(0, 10); // today
     let fourDaysAhead = getDaysAhead(3);
 
-     fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/tel%20aviv+Israel/" +
+    fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"+
+      this.choosenCity + "%20" + this.choosenCountry + "/" +
       today + "/"+ fourDaysAhead +"?unitGroup=metric&include=days%2Cfcst&key=" + API_KEY
       + "&contentType=json")
     .then(response=>response.json())

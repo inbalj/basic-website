@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, Observable } from "rxjs";
+import { map, Observable, Subject } from "rxjs";
 import { Country } from "../models/country.models";
 import { City } from "../models/city.models";
 
@@ -10,6 +10,13 @@ import { City } from "../models/city.models";
 })
 
 export class WeatherService {
+
+	private weatherDataSubject = new Subject<any>();
+  weatherData$ = this.weatherDataSubject.asObservable();
+// method to update new data from weather-form
+  updateWeatherData(newData: any) {
+    this.weatherDataSubject.next(newData);
+  }
 
   constructor(private http: HttpClient) {}
 
