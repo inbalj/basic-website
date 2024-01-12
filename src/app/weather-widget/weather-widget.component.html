@@ -1,17 +1,19 @@
 
 <h2 class="center">The weather in {{ choosenCity }}</h2>
-<div id="divWeatherMain" class="center">
+<div id="divWeatherMain" class="center" [ngClass]= "{
+  'day' : weatherData.isDay,
+  'night': !weatherData.isDay }">
   <div *ngIf="weatherData.isDay" class="weatherWidgetRow">
       <i class="fas fa-3x fa-sun sun"></i>
   </div>
   <div *ngIf="!weatherData.isDay" class="weatherWidgetRow">
       <i class="fas fa-3x fa-moon moon"></i>
   </div>
-  <div *ngIf="weatherData.isCloudy" class="weatherWidgetRow cloudDiv">
+  <div *ngIf="weatherData.isCloudy && !weatherData.isRainy" class="weatherWidgetRow cloudDiv">
       <i class="fas fa-cloud fa-3x cloud"></i>
   </div>
-  <div *ngIf="weatherData.isRainy" class="weatherWidgetRow rainDiv">
-    <i class="fas fa-rain fa-3x rain"></i>
+  <div *ngIf="weatherData.isRainy " class="weatherWidgetRow rainDiv">
+    <i class="fas fa-cloud-rain fa-3x rain"></i>
 </div>
   <div class="weatherWidgetRow" style="font-size: 40px;margin-top: 5px;">{{weatherData.tempCelcius}}°</div>
   <div class="weatherWidgetRow" style="font-size: 17px;">{{weatherData.tempMin}}° / {{weatherData.tempMax}}°</div>

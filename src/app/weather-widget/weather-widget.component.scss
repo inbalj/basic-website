@@ -3,9 +3,7 @@
   border-radius: 10px;
   width: 250px;
   height: 270px;
-  background: rgb(0,0,0);
-  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(8,7,42,1) 75%, rgb(8, 10, 63) 100%);
-  color: white;;
+  color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -13,6 +11,16 @@
   display:block;
   margin:0 auto;
   width: fit-content;
+}
+
+.day{
+  background: rgb(0, 200, 255);
+  background: linear-gradient(180deg, rgba(0,200,255,1) 0%, rgb(161, 201, 226) 75%, rgb(170, 203, 212) 100%);
+}
+
+.night{
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(8,7,42,1) 75%, rgb(8, 10, 63) 100%);
 }
 
 .sun{
@@ -27,11 +35,21 @@
   filter: drop-shadow( 1px 1px 10px white);
 }
 
-.cloudDiv{
-  margin-top: -40px;
+.cloudDiv, .rainDiv{
+  margin-top: -35px;
 }
 
 .cloud{
+  color: rgb(104, 175, 197);
+  filter: drop-shadow( 1px 1px 5px rgb(104, 175, 197));
+  animation-name: cloudMovement;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+.rain{
   color: rgb(104, 175, 197);
   filter: drop-shadow( 1px 1px 5px rgb(104, 175, 197));
   animation-name: cloudMovement;
