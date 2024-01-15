@@ -4,14 +4,14 @@
     <table class="w3-table w3-striped w3-bordered">
       <thead>
         <tr class="t-header">
-          <th *ngFor="let header of headers">
+          <th *ngFor="let header of headers" scope="col">
             {{ header }}
           </th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let day of weatherData.days">
-          <td>{{ day.datetime }}</td>
+          <td scope="row">{{ day.datetime }}</td>
           <td>{{ day.temp}}</td>
           <td>{{ day.tempmin }}</td>
           <td>{{ day.tempmax }}</td>

@@ -13,22 +13,22 @@ export class HomeComponent {
 
   images : CarouselImage[] = [
     {
-      url: 'https://thumbnails.production.thenounproject.com/WJPigpU9bCPb4XLjtIpyJttbDrg=/fit-in/1000x1000/photos.production.thenounproject.com/photos/food_and_drinks_for_two_on_a_tray-scopio-ab957dbf-9d59-4137-8d47-7df1de081b01.jpg',
+      url: '../../assets/images/food_and_drinks_for_two_on_a_tray-scopio-ab957dbf-9d59-4137-8d47-7df1de081b01.jpg',
       caption: 'Food and drinks for two on a tray',
       alt: ''
     },
     {
-      url: 'https://thumbnails.production.thenounproject.com/HgN-J2oTJH7jN0zk39PrjfZRZQ8=/fit-in/1000x1000/photos.production.thenounproject.com/photos/1FF713FB-6FE3-40C2-8AF1-D175E8B0BDBB.jpg',
+      url: '../../assets/images/1FF713FB-6FE3-40C2-8AF1-D175E8B0BDBB.jpg',
       caption: 'shishlik sticks',
       alt: ''
     },
     {
-      url: 'https://thumbnails.production.thenounproject.com/SPLbXSt8SWWBo5BKyyb5EiGJIYI=/fit-in/1000x1000/photos.production.thenounproject.com/photos/D2F2DE27-EF48-488C-9790-4C0EB1918A3C.jpg',
+      url: '../../assets/images/D2F2DE27-EF48-488C-9790-4C0EB1918A3C.jpg',
       caption: 'Dinner meal with five USDA food',
       alt: '',
     },
     {
-      url: 'https://thumbnails.production.thenounproject.com/6FcAK8OtyFsQVRWfb6R6SGVfAR4=/fit-in/1000x1000/photos.production.thenounproject.com/photos/7D774C16-6CA9-4898-AEB5-A52FC76BBC8E.jpg',
+      url: '../../assets/images/7D774C16-6CA9-4898-AEB5-A52FC76BBC8E.jpg',
       caption: 'Dog sitting tall by food bowl',
       alt: '',
     },
