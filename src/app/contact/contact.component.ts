@@ -4,7 +4,7 @@ import { ContactFormComponent } from '../contact-form/contact-form.component';
 import { MessageListComponent } from '../message-list/message-list.component';
 import { MessageItem } from '../../shared/models/messageItem';
 import { MessageListItemComponent } from '../message-list-item/message-list-item.component';
-import{ EventService } from '../../shared/services/EventService';
+import { EventService } from '../../shared/services/EventService';
 
 @Component({
   selector: 'contact',
