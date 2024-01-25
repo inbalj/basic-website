@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 import { WeatherService } from '../../shared/services/WeatherService';
-
+import { WeatherData } from '../../shared/models/weatherdata.models';
 
 const API_KEY = '6USUUHESZ2GF6GQZCQGDYXQ2X';
 
@@ -22,7 +22,8 @@ export class WeatherForecastComponent implements OnInit {
   @Input() choosenCountry : string = '';
 
 
-  weatherData: any = {};
+  weatherData : WeatherData[]=[];
+
   headers = [
     "Date",
     "Temp",
@@ -34,7 +35,7 @@ export class WeatherForecastComponent implements OnInit {
     "Icon"
   ];
 
-  constructor(private http: HttpClient, private weatherService: WeatherService) {}
+  constructor( private weatherService: WeatherService) {}
 
   ngOnInit(): void {
     this.getForecastFromToday();
@@ -55,15 +56,26 @@ export class WeatherForecastComponent implements OnInit {
       today + "/"+ fourDaysAhead +"?unitGroup=metric&include=days%2Cfcst&key=" + API_KEY
       + "&contentType=json")
     .then(response=>response.json())
-    .then(data=>{this.loadForecastData(data);})
+    .then(data=>{this.loadForecastData(data.days);})
 
   }
 
-  loadForecastData( data : any[]){
-    this.weatherData = data;
-  }
+  loadForecastData(data: WeatherData[]): void {
 
+    // Extract and assign properties directly to weatherData array
+    this.weatherData = data.map((item) => ({
+      datetime: item.datetime,
+      temp: item.temp,
+      tempmin: item.tempmin,
+      tempmax: item.tempmax,
+      feelslike: item.feelslike,
+      humidity: item.humidity,
+      conditions: item.conditions,
+      icon: item.icon,
+    }));
+  }
 }
+
 
 function getDaysAhead(days : number) {
   // Get today's date as a Date object

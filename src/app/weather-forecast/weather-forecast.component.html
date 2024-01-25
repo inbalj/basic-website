@@ -10,9 +10,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let day of weatherData.days">
+        <tr *ngFor="let day of weatherData">
           <td scope="row">{{ day.datetime }}</td>
-          <td>{{ day.temp}}</td>
+          <td>{{ day.temp }}</td>
           <td>{{ day.tempmin }}</td>
           <td>{{ day.tempmax }}</td>
           <td>{{ day.feelslike }}</td>
