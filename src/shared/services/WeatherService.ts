@@ -3,13 +3,17 @@ import { Injectable } from "@angular/core";
 import { map, Observable, Subject } from "rxjs";
 import { Country } from "../models/country.models";
 import { City } from "../models/city.models";
+import { WeatherData } from "../models/weatherdata.models";
 
+const API_KEY = '6USUUHESZ2GF6GQZCQGDYXQ2X';
 
 @Injectable({
 	providedIn: "root",
 })
 
 export class WeatherService {
+
+	readonly WEATHER_URL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline';
 
 	private weatherDataSubject = new Subject<any>();
   weatherData$ = this.weatherDataSubject.asObservable();
@@ -38,5 +42,13 @@ export class WeatherService {
 				)
 			);
 	}
+
+	// shows the default - Tel Aviv
+	getWeatherData(): Observable <WeatherData[]> {
+    return this.http.
+		get<WeatherData[]>(
+      this.WEATHER_URL +
+      '/tel%20aviv/today?unitGroup=metric&include=current&key=' + API_KEY);
+     }
 
 }
