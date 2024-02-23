@@ -24,27 +24,25 @@ export class WeatherWidgetComponent implements OnInit{
   @Input() choosenCountry : string = '';
 
 
-  weatherData : any;
+  weatherData! : WeatherData;
   errorMessage!: string;
+  isDay = true;
+  isCloudy = false;
+  isRainy = false;
   constructor(private http:HttpClient, private weatherService: WeatherService) {}
 
 
   ngOnInit(): void {
-    this.weatherData = {
-      isDay: true,
-      isCloudy: false,
-      isRainy: false
-    };
 
-    this.weatherService.getWeatherData().subscribe({
+    this.weatherService.getWeatherData(this.choosenCity,this.choosenCountry,false).subscribe({
       next: (data) => {
-        this.weatherData = data;
-        this.setWeatherData(this.weatherData);
+        this.setWeatherData( data );
       },
       error: (error) => {
         this.errorMessage = error;
       },
     });
+
 
     // subscribe to the weatherService to update the data according to the service
     this.weatherService.weatherData$.subscribe(data => {
@@ -61,18 +59,17 @@ export class WeatherWidgetComponent implements OnInit{
     .then(data=>{this.setWeatherData(data);})
   }
 
-  setWeatherData(data : any){
-    this.weatherData = data;
-    this.weatherData.isDay = ((this.weatherData.currentConditions.datetimeEpoch < this.weatherData.currentConditions.sunsetEpoch)
-                &&(this.weatherData.currentConditions.datetimeEpoch > this.weatherData.currentConditions.sunriseEpoch));
-    this.weatherData.tempCelcius = this.weatherData.currentConditions.temp;
-    this.weatherData.tempMin = this.weatherData.days[0].tempmin;
-    this.weatherData.tempMax = this.weatherData.days[0].tempmax;
-    this.weatherData.humidity = this.weatherData.currentConditions.humidity;
-    this.weatherData.feelLike = this.weatherData.currentConditions.feelslike;
-    this.weatherData.isCloudy = this.weatherData.currentConditions.conditions.includes('cloudy');
-    this.weatherData.isRainy = this.weatherData.currentConditions.conditions.includes('Rain');
+  setWeatherData(data : any): void {
 
+    this.weatherData = data;
+    this.isDay = ((data.currentConditions.datetimeEpoch < data.currentConditions.sunsetEpoch) && (data.currentConditions.datetimeEpoch > data.currentConditions.sunriseEpoch));
+    this.weatherData.temp = data.currentConditions.temp;
+    this.weatherData.tempmin = data.days[0].tempmin;
+    this.weatherData.tempmax = data.days[0].tempmax;
+    this.weatherData.humidity = data.currentConditions.humidity;
+    this.weatherData.feelslike = data.currentConditions.feelslike;
+    this.isCloudy = data.days[0].conditions.includes('cloudy');
+    this.isRainy = data.days[0].conditions.includes('Rain');
   }
 
 }

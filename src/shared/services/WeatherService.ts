@@ -44,7 +44,7 @@ export class WeatherService {
 	}
 
 	// shows the default - Tel Aviv
-	getWeatherData(): Observable <WeatherData[]> {
+	getWeatherData(city:string = 'tel aviv',country:string = 'Israel',forecast: boolean): Observable <WeatherData[]> {
     return this.http.
 		get<WeatherData[]>(
       this.WEATHER_URL +
