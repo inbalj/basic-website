@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { WeatherData } from '../../shared/models/weatherdata.models';
 
 
-const API_KEY = '6USUUHESZ2GF6GQZCQGDYXQ2X';
+const API_KEY = '';
 
 
 @Component({
