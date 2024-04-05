@@ -5,7 +5,7 @@ import { Country } from "../models/country.models";
 import { City } from "../models/city.models";
 import { WeatherData } from "../models/weatherdata.models";
 
-const API_KEY = '6USUUHESZ2GF6GQZCQGDYXQ2X';
+const API_KEY = '';
 
 @Injectable({
 	providedIn: "root",
